@@ -11,6 +11,7 @@ const Nav = styled.div`
     width: 100%;
     overflow: hidden;
     z-index: 100;
+    top: 0px;
 `
 
 const NavLink = styled.a`
