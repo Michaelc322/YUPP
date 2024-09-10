@@ -81,7 +81,7 @@ const MainLogo = styled.span`
 const Navbar = () => {
   return (
     <Nav>
-        <NavLink href="/">Restaurants</NavLink>
+        <NavLink href="/map">Restaurants</NavLink>
         <NavLink href="/">Our Mission</NavLink>
 
         <LogoBackground>
