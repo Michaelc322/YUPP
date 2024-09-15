@@ -4,8 +4,8 @@ import Map from '../map/Map'
 
 const DealCard = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: left;
     height: 300px;
     width: 350px;
     background-color: var(--logo-background);
@@ -14,6 +14,28 @@ const DealCard = styled.div`
     box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.4);
     top: -100px;
     position: relative;
+
+`
+
+const Distance = styled.p`
+    font-size: 15px;
+    font-weight: 300;
+    color: #fff;
+    font-family: Montserrat;
+    margin-left: 20px;
+    background-color: var(--secondary-text);
+    width: 50px;
+    padding: 5px;
+    border-radius: 10px;
+`
+
+const Name = styled.h1`
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--secondary-text);
+    font-family: Montserrat;
+    margin: 0;
+    margin-left: 20px;
 
 `
 
@@ -69,9 +91,9 @@ const Restaurants = () => {
 
 
     <DealCard>
-        <h1>
-            Restaurants
-        </h1>
+        <Distance>0.5 mi</Distance>
+        <Name>placeholder name</Name>
+
     </DealCard>
     </>
   )
