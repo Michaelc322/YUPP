@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Map from './map/Map'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Restaurants from './pages/Restaurants'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/map' element={<Map/>}/>
+          <Route path='/restaurants' element={<Restaurants/>}/>
         </Routes>
       </BrowserRouter>
     </>

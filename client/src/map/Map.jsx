@@ -3,8 +3,11 @@ import GoogleMapReact from 'google-map-react';
 import styled from 'styled-components'
 
 const MapContainer = styled.div`
-  height: calc(100vh - 100px);
+  height: 450px;
   box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.4);
+  top: 100px;
+  position: relative;
+
 `
 const Map = () => {
 

@@ -87,7 +87,7 @@ const HomeButton = styled.a`
 const Navbar = () => {
   return (
     <Nav>
-        <NavLink href="/map">Restaurants</NavLink>
+        <NavLink href="/restaurants">Restaurants</NavLink>
         <NavLink href="/">Our Mission</NavLink>
 
         <LogoBackground>
