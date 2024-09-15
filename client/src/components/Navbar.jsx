@@ -77,6 +77,12 @@ const MainLogo = styled.span`
 
 
 `
+const HomeButton = styled.a`
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: var(--secondary-text);
+`
 
 const Navbar = () => {
   return (
@@ -86,11 +92,12 @@ const Navbar = () => {
 
         <LogoBackground>
             <MainLogo>
-                <span class="Y">Y</span>
-                <span class="U">U</span>
-                <span class="P1">P</span>
-                <span class="P2">P</span>
-
+                <HomeButton href='/'>
+                    <span class="Y">Y</span>
+                    <span class="U">U</span>
+                    <span class="P1">P</span>
+                    <span class="P2">P</span>
+                </HomeButton>
             </MainLogo>
         </LogoBackground>
         <NavLink href="/about">FAQ</NavLink>
