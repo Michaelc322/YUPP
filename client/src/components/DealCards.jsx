@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Slider from 'react-slick'
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
 
 const HorizontalStack = styled.div`
   width: 100%; /* Full width */
@@ -11,7 +12,7 @@ const HorizontalStack = styled.div`
 `
 
 const ContainerSlider = styled.div`
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 
 `
@@ -90,20 +91,55 @@ const CardContainer = styled.div`
 
 const DealCards = ({ places }) => {
 
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4, 
-  };
-
-
   return (
     <HorizontalStack>
       <ContainerSlider>
-    <Slider {...settings}>
+
+    <Swiper 
+      spaceBetween={50}
+      slidesPerView={5}
+      centeredSlides={false}
+      slidesPerGroup={1}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+      loop={true}
+      navigation= {{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }}
+      modules={[Navigation]}
+      breakpoints={{
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        // when window width is >= 480px
+        480: {
+          slidesPerView: 2,
+          spaceBetween: 30
+        },
+        900: {
+          slidesPerView: 3,
+          spaceBetween: 30
+        },
+        // when window width is >= 640px
+        1445: {
+          slidesPerView: 4,
+          spaceBetween: 40
+        },
+        2100: {
+          slidesPerView: 5,
+          spaceBetween: 50
+        }
+      }}
+      
+    >
+      <div class="swiper-button-prev"></div>
+
       {places?.map((place, index) => (
+
+        <SwiperSlide key={index}>
         <CardContainer>
         <DealCardContainer key={index}>
           <Distance>{place.distance_string}</Distance>
@@ -111,10 +147,12 @@ const DealCards = ({ places }) => {
           <Address>{place.address}</Address>
         </DealCardContainer>
         </CardContainer>
-
-      
+        </SwiperSlide>
       ))}
-    </Slider>
+      <div class="swiper-button-next"></div>
+      
+    </Swiper>
+    
     </ContainerSlider>
     </HorizontalStack>
 

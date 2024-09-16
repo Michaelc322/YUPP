@@ -14,12 +14,13 @@ body {
 
 }
 
-.slick-prev:before, .slick-next:before {
-  color: var(--secondary-text);
-  font-size: 50px;
+.swiper {
+  padding: 0 5% !important;
 }
 
-.slick-prev:before {
-  position: relative;
-  left: -40px;
+
+
+.swiper-button-next, .swiper-button-prev {
+  color: var(--secondary-text);
 }
+

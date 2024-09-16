@@ -46,9 +46,63 @@ const Restaurants = () => {
 
 
     const [coordinates, setCoordinates] = useState({})
-    const [places, setPlaces] = useState([])
+    // const [places, setPlaces] = useState([])
     const [bounds, setBounds] = useState({})
 
+    const places = [
+        {
+            name: 'McDonalds',
+            price: '$',
+            distance_string: '0.5 mi',
+            address: '1234 Main St'
+
+        },
+        {
+            name: 'Burger King',
+            price: '$',
+            distance_string: '0.5 mi',
+            address: '1234 Main St'
+            
+        },
+        {
+            name: 'Chick-fil-a',
+            price: '$',
+            distance_string: '0.5 mi',
+            address: '1234 Main St'
+            
+        },
+        {
+            name: 'Chipotle',
+            price: '$',
+            distance_string: '0.5 mi',
+            address: '1234 Main St'
+            
+        },
+        {
+            name: 'Taco Bell',
+            price: '$',
+            distance_string: '0.5 mi',
+            address: '1234 Main St'
+            
+        },
+        {
+            name: 'Wendys',
+            price: '$',
+            distance_string: '0.5 mi',
+            address: '1234 Main St'
+            
+        },
+        {
+            name: 'Popeyes',
+            price: '$',
+            distance_string: '0.5 mi',
+            address: '1234 Main St'
+            
+        },
+
+
+
+    ]
     const getPlacesData = async (sw, ne) => {
         try {
             const { data: { data }} = await axios.get(URL, {
