@@ -6,7 +6,7 @@ const Nav = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--background-color);
+    background: var(--navbar-color);
     height: 100px;
     width: 100%;
     overflow: hidden;
@@ -34,10 +34,10 @@ const NavLink = styled.a`
 
 const LogoBackground = styled.div`
     background-color: var(--logo-background);
-    height: 100px;
-    width: 250px;
+    height: 80px;
+    width: 200px;
     overflow: hidden;
-    border-radius: 0 0 25px 25px;
+    border-radius: 25px 25px 25px 25px;
     display: flex;
     justify-content: center;
     align-items: center;
