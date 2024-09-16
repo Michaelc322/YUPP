@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Slider from 'react-slick'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
 const HorizontalStack = styled.div`
   width: 100%; /* Full width */
