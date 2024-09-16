@@ -13,3 +13,13 @@ body {
   padding: 0;
 
 }
+
+.slick-prev:before, .slick-next:before {
+  color: var(--secondary-text);
+  font-size: 50px;
+}
+
+.slick-prev:before {
+  position: relative;
+  left: -40px;
+}

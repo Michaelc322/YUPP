@@ -10,23 +10,39 @@ const MapContainer = styled.div`
   position: relative;
 
 `
-const Map = () => {
 
-  const [coordinates, setCoordinates] = useState({});
+const MarkerContainer = styled.div`
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background-color: #fff;
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
-      setCoordinates({lat: latitude, lng: longitude});
-    })
-  }, []);
+`
+
+const Map = ({ setBounds, coordinates, setCoordinates, places }) => {
+
+    // const [coordinates, setCoordinates] = useState({});
+    const [markers, setMarkers] = useState([]);
+
+    const [userMarker, setUserMarker] = useState({});
+
+    useEffect(() => {
+        setMarkers(places);
+    }, [places])
 
   return (
+
     <MapContainer>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDZaDr8KY4EcksgJ5mVXyknwF6OY2eGNuo' }}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={14}
+        onChange={(e) => {
+            setCoordinates({lat: e.center.lat, lng: e.center.lng});
+            setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw});
+        }}
+
         options = {{ disableDefaultUI: true, zoomControl: true, styles: [
           {
               "elementType": "labels",
@@ -227,9 +243,20 @@ const Map = () => {
           {},
           {},
           {}
-      ]}}
+      
+        ]}}
         margin={[50, 50, 50, 50]}
       >
+        {places?.map((place, i) => (
+            <MarkerContainer
+                lat={place.latitude}
+                lng={place.longitude}
+                key={i}
+            >
+                <h1>test</h1>
+
+            </MarkerContainer>
+        ))}
 
       </GoogleMapReact>
 
