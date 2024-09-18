@@ -23,13 +23,7 @@ const Map = ({ setBounds, coordinates, setCoordinates, places }) => {
 
     // const [coordinates, setCoordinates] = useState({});
     const [markers, setMarkers] = useState([]);
-
     const [userMarker, setUserMarker] = useState({});
-
-    useEffect(() => {
-        setMarkers(places);
-    }, [places])
-
   return (
 
     <MapContainer>
@@ -249,11 +243,11 @@ const Map = ({ setBounds, coordinates, setCoordinates, places }) => {
       >
         {places?.map((place, i) => (
             <MarkerContainer
-                lat={place.latitude}
-                lng={place.longitude}
+                lat={place.lat}
+                lng={place.lng}
                 key={i}
             >
-                <h1>test</h1>
+                <h1>{place.latitude}</h1>
 
             </MarkerContainer>
         ))}

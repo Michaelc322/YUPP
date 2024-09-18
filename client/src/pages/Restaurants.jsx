@@ -99,6 +99,22 @@ const Restaurants = () => {
             address: '1234 Main St'
             
         },
+        {
+            name:'Madison Social',
+            price: '$$',
+            distance_string: '0.5 mi',
+            address: '1234 Main St',
+            lat: 30.43684071311915,
+            lng: -84.29809147509647,
+        },
+        {
+            name: 'Little Masa',
+            price: '$$',
+            distance_string: '0.5 mi',
+            address: '1234 Main St',
+            lat: 30.43685178918325, 
+            lng: -84.29704844462029
+        }
 
 
 
@@ -134,7 +150,8 @@ const Restaurants = () => {
     useEffect(() => {
         console.log(coordinates, bounds);
         getPlacesData(bounds.sw, bounds.ne).then((data) => {
-            setPlaces(data)
+            //setPlaces(data)
+            console.log(places)
         })
     }, [coordinates, bounds])
 
