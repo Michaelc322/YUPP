@@ -82,7 +82,7 @@ const Navbar = () => {
   return (
     <Nav>
         <NavLink href="/map">Restaurants</NavLink>
-        <NavLink href="/">Our Mission</NavLink>
+        <NavLink href="/OurMission">Our Mission</NavLink>
 
         <LogoBackground>
             <MainLogo>
