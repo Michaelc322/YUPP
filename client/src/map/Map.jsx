@@ -19,23 +19,22 @@ const MarkerContainer = styled.div`
 
 `
 
-const Map = ({ setBounds, coordinates, setCoordinates, places }) => {
+const Map = ({ setBounds, coordinates, setCoordinates, places, currentLocation }) => {
 
     // const [coordinates, setCoordinates] = useState({});
-    const [markers, setMarkers] = useState([]);
 
     const [userMarker, setUserMarker] = useState({});
+    //const [currentLocation, setCurrentLocation] = useState({});
+    console.log(places)
+    console.log(coordinates)
+    console.log(currentLocation)
 
-    useEffect(() => {
-        setMarkers(places);
-    }, [places])
-
-  return (
+return (
 
     <MapContainer>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDZaDr8KY4EcksgJ5mVXyknwF6OY2eGNuo' }}
-        defaultCenter={coordinates}
+        defaultCenter={currentLocation}
         center={coordinates}
         defaultZoom={16}
         onChange={(e) => {
@@ -247,6 +246,13 @@ const Map = ({ setBounds, coordinates, setCoordinates, places }) => {
         ]}}
         margin={[50, 50, 50, 50]}
       >
+        <MarkerContainer
+            lat={currentLocation.lat}
+            lng={currentLocation.lng}
+            key={0}
+            >
+
+        </MarkerContainer>
         {places?.map((place, i) => (
             <MarkerContainer
                 lat={place.latitude}
