@@ -10,7 +10,21 @@ const Container = styled.div`
     top: 100px;
     width: 100%;
 
+  `
+  const VerticalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 800px;
+  width: 1200px;
+  margin-left: 100px;
+
+  .textHolder {
+    width: 700px;
+  }
+
 `
+
 const Header = styled.h1`
     align-items: left;
     font-size: 75px;
@@ -30,6 +44,7 @@ const SubText = styled.p`
 const OurMission = () => {
   return (
     <Container>
+      <VerticalContainer>
       <div>
           <Header>Our Mission </Header>
           <SubText>
@@ -40,6 +55,7 @@ const OurMission = () => {
           let YUPP do the work for you!
           </SubText>
         </div>
+        </VerticalContainer>
     </Container>
   )
 }
