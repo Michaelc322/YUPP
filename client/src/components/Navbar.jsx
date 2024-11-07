@@ -30,7 +30,7 @@ const NavLink = styled.a`
     cursor: pointer;
     margin-left: 20px;
     margin-right: 20px;
-    transition: 0.8s;
+    transition: 0.5s;
     width: 150px;
     height: 100px;
     position: relative;
@@ -57,7 +57,7 @@ const NavLink = styled.a`
         /* bottom: 0;
         left: 0; */
         background: var(--secondary-text);
-        transition: width 0.8s, height 0.8s;
+        transition: width 0.5s, height 0.5s;
         z-index: -1;
 
     }
@@ -122,6 +122,12 @@ const MainLogo = styled.span`
 
 
 `
+const HomeButton = styled.a`
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: var(--secondary-text);
+`
 
 const Navbar = () => {
     const handleMouseEnter = (e) => {
@@ -136,16 +142,17 @@ const Navbar = () => {
   return (
     <>
     <Nav>
-        <NavLink className="btn" href="/map" onMouseEnter={handleMouseEnter}>Restaurants</NavLink>
+        <NavLink className="btn" href="/restaurants" onMouseEnter={handleMouseEnter}>Restaurants</NavLink>
         <NavLink className="btn" href="/" onMouseEnter={handleMouseEnter}>Our Mission</NavLink>
 
         <LogoBackground>
             <MainLogo>
-                <span class="Y">Y</span>
-                <span class="U">U</span>
-                <span class="P1">P</span>
-                <span class="P2">P</span>
-
+                <HomeButton href='/'>
+                    <span class="Y">Y</span>
+                    <span class="U">U</span>
+                    <span class="P1">P</span>
+                    <span class="P2">P</span>
+                </HomeButton>
             </MainLogo>
         </LogoBackground>
         <NavLink href="/about" onMouseEnter={handleMouseEnter}>FAQ</NavLink>

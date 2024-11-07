@@ -4,26 +4,44 @@ import styled from 'styled-components'
 
 
 const MapContainer = styled.div`
-  height: calc(100vh - 100px);
+  height: 450px;
   box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.4);
+  top: 100px;
+  position: relative;
+
 `
-const Map = () => {
 
-  const [coordinates, setCoordinates] = useState({});
+const MarkerContainer = styled.div`
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background-color: #fff;
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
-      setCoordinates({lat: latitude, lng: longitude});
-    })
-  }, []);
+`
 
-  return (
+const Map = ({ setBounds, coordinates, setCoordinates, places, currentLocation }) => {
+
+    // const [coordinates, setCoordinates] = useState({});
+
+    const [userMarker, setUserMarker] = useState({});
+    //const [currentLocation, setCurrentLocation] = useState({});
+    console.log(places)
+    console.log(coordinates)
+    console.log(currentLocation)
+
+return (
+
     <MapContainer>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDZaDr8KY4EcksgJ5mVXyknwF6OY2eGNuo' }}
-        defaultCenter={coordinates}
+        defaultCenter={currentLocation}
         center={coordinates}
-        defaultZoom={14}
+        defaultZoom={16}
+        onChange={(e) => {
+            setCoordinates({lat: e.center.lat, lng: e.center.lng});
+            setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw});
+        }}
+
         options = {{ disableDefaultUI: true, zoomControl: true, styles: [
           {
               "elementType": "labels",
@@ -224,9 +242,27 @@ const Map = () => {
           {},
           {},
           {}
-      ]}}
+      
+        ]}}
         margin={[50, 50, 50, 50]}
       >
+        <MarkerContainer
+            lat={currentLocation.lat}
+            lng={currentLocation.lng}
+            key={0}
+            >
+
+        </MarkerContainer>
+        {places?.map((place, i) => (
+            <MarkerContainer
+                lat={place.lat}
+                lng={place.lng}
+                key={i}
+            >
+                <h1>{place.latitude}</h1>
+
+            </MarkerContainer>
+        ))}
 
       </GoogleMapReact>
 
