@@ -4,6 +4,8 @@
   --secondary-color: #6c757d;
   --secondary-text: #269577;
   --logo-background: #f4d548;
+  --question-text: var(--logo-background);
+  --answer-text: orange;
   background-color: var(--background-color);
 
 }
