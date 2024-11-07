@@ -142,6 +142,8 @@ const Navbar = () => {
   return (
     <>
     <Nav>
+        <NavLink href="/map">Restaurants</NavLink>
+        <NavLink href="/OurMission">Our Mission</NavLink>
         <NavLink className="btn" href="/restaurants" onMouseEnter={handleMouseEnter}>Restaurants</NavLink>
         <NavLink className="btn" href="/" onMouseEnter={handleMouseEnter}>Our Mission</NavLink>
 
