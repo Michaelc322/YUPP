@@ -42,12 +42,19 @@ const Search = styled.input`
 const Restaurants = () => {
 
 
-    const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary'
-
-
+    //const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
+    const url = ""
     const [coordinates, setCoordinates] = useState({})
-    // const [places, setPlaces] = useState([])
+    //const [places, setPlaces] = useState([])
     const [bounds, setBounds] = useState({})
+    const [currentLocation, setCurrentLocation] = useState({})
+    const location = `location=${coordinates.lat},${coordinates.lng}`;
+    const radius = '&radius=2000';
+    const type = '&keyword=restaurant';
+    const key = '&key=AIzaSyDZaDr8KY4EcksgJ5mVXyknwF6OY2eGNuo';
+    const restaurantSearchUrl = url + location + radius + type + key;
+
+
 
     const places = [
         {
@@ -99,59 +106,53 @@ const Restaurants = () => {
             address: '1234 Main St'
             
         },
-        {
-            name:'Madison Social',
-            price: '$$',
-            distance_string: '0.5 mi',
-            address: '1234 Main St',
-            lat: 30.43684071311915,
-            lng: -84.29809147509647,
-        },
-        {
-            name: 'Little Masa',
-            price: '$$',
-            distance_string: '0.5 mi',
-            address: '1234 Main St',
-            lat: 30.43685178918325, 
-            lng: -84.29704844462029
-        }
 
 
 
     ]
+
+
+
     const getPlacesData = async (sw, ne) => {
         try {
-            const { data: { data }} = await axios.get(URL, {
-                params: {
-                    bl_latitude: sw.lat,
-                    tr_latitude: ne.lat,
-                    bl_longitude: sw.lng,
-                    tr_longitude: ne.lng,
-                    lunit: 'mi'
-                  },
-                  headers: {
-                    'x-rapidapi-key': '47ffb58032mshfc379c19437d4ebp18eaf5jsnd1bf0da65be2',
-                    'x-rapidapi-host': 'travel-advisor.p.rapidapi.com'
-                  }
-            })
-
+            // const { data: { data }} = await axios.get(URL, {
+            //     params: {
+            //         bl_latitude: sw.lat,
+            //         tr_latitude: ne.lat,
+            //         bl_longitude: sw.lng,
+            //         tr_longitude: ne.lng,
+            //         lunit: 'mi'
+            //       },
+            //       headers: {
+            //         'x-rapidapi-key': '47ffb58032mshfc379c19437d4ebp18eaf5jsnd1bf0da65be2',
+            //         'x-rapidapi-host': 'travel-advisor.p.rapidapi.com'
+            //       }
+            // })
+            if (coordinates.lat && coordinates.lng) {
+                const { data } = await axios.get(restaurantSearchUrl)
+            }
+            
             return data
         } catch (error) {
             console.log(error)
         }
     }
 
+
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
           setCoordinates({lat: latitude, lng: longitude});
+          console.log("changed")
+          setCurrentLocation({lat: latitude, lng: longitude});
         })
       }, []);
 
     useEffect(() => {
         console.log(coordinates, bounds);
-        getPlacesData(bounds.sw, bounds.ne).then((data) => {
-            //setPlaces(data)
-            console.log(places)
+        console.log(coordinates.lat, coordinates.lng)
+        getPlacesData(coordinates.lat, coordinates.lng).then((data) => {
+            setPlaces(data)
+            console.log
         })
     }, [coordinates, bounds])
 
@@ -169,7 +170,8 @@ const Restaurants = () => {
     <Map setBounds={setBounds}
         setCoordinates={setCoordinates}
         coordinates={coordinates}
-        places={places}/>
+        places={places}
+        currentLocation={currentLocation}/>
 
 
     <DealCards places={places}/>

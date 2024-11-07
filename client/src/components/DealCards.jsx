@@ -90,6 +90,7 @@ const CardContainer = styled.div`
 
 
 const DealCards = ({ places }) => {
+    //console.log(places)
 
   return (
     <HorizontalStack>
