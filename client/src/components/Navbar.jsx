@@ -15,7 +15,9 @@ const Nav = styled.div`
 `
 
 const NavLink = styled.a`
-
+    display: flex;
+    justify-content: center;    
+    align-items: center;
     color: var(--text-color);
     text-align: center;
     font-family: Montserrat;
@@ -28,6 +30,49 @@ const NavLink = styled.a`
     cursor: pointer;
     margin-left: 20px;
     margin-right: 20px;
+    transition: 0.5s;
+    width: 150px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+
+    &:hover{
+        color: #fff;
+
+    }
+
+    &::before{
+        content: "";
+        position: absolute;
+        /* width: 100%;
+        height: 0%; */
+        top: var(--y);
+        left: var(--x);
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+
+
+        /* bottom: 0;
+        left: 0; */
+        background: var(--secondary-text);
+        transition: width 0.5s, height 0.5s;
+        z-index: -1;
+
+    }
+
+    /* &:before{
+        bottom: 0;
+        border-radius: 50% 50% 0 0;
+    } */
+
+
+    &:hover::before{
+        /* height: 180%; */
+        width: 350px;
+        height: 350px;
+    }
 `
 
 
@@ -76,25 +121,45 @@ const MainLogo = styled.span`
 
 
 `
+const HomeButton = styled.a`
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: var(--secondary-text);
+`
 
 const Navbar = () => {
+    const handleMouseEnter = (e) => {
+        const navLink = e.target;
+        const navLinkBox = navLink.getBoundingClientRect();
+        const x = e.clientX - navLinkBox.left;
+        const y = e.clientY - navLinkBox.top;
+        navLink.style.setProperty('--x', `${x}px`);
+        navLink.style.setProperty('--y', `${y}px`);
+    }
+    
   return (
+    <>
     <Nav>
-        <NavLink href="/map">Restaurants</NavLink>
-        <NavLink href="/">Our Mission</NavLink>
+        <NavLink className="btn" href="/restaurants" onMouseEnter={handleMouseEnter}>Restaurants</NavLink>
+        <NavLink className="btn" href="/OurMission" onMouseEnter={handleMouseEnter}>Our Mission</NavLink>
 
         <LogoBackground>
             <MainLogo>
-                <span class="Y">Y</span>
-                <span class="U">U</span>
-                <span class="P1">P</span>
-                <span class="P2">P</span>
-
+                <HomeButton href='/'>
+                    <span class="Y">Y</span>
+                    <span class="U">U</span>
+                    <span class="P1">P</span>
+                    <span class="P2">P</span>
+                </HomeButton>
             </MainLogo>
         </LogoBackground>
-        <NavLink href="/about">FAQ</NavLink>
-        <NavLink href="/contact">Contact Us</NavLink>
+        <NavLink href="/about" onMouseEnter={handleMouseEnter}>FAQ</NavLink>
+        <NavLink href="/contact" onMouseEnter={handleMouseEnter}>Contact Us</NavLink>
     </Nav>
+
+
+    </>
   )
 }
 
