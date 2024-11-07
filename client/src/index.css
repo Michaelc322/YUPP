@@ -1,7 +1,6 @@
 :root {
-  --background-color: #FFF3DD;
-  --navbar-color: var(--secondary-text);
-  --text-color: var(--logo-background);
+  --background-color: #fff5ec;
+  --text-color: #000000;
   --secondary-color: #6c757d;
   --secondary-text: #269577;
   --logo-background: #f4d548;
