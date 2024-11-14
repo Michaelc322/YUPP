@@ -1,9 +1,5 @@
-
-<form action = "action page.php" method ="post">
-
-</form>
-import React from 'react'
-import './login.css'
+import React from 'react';
+import styled from 'styled-components';
 
 const Body = styled.div`
   font-family: Arial, sans-serif;
