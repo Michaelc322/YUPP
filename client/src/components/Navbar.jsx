@@ -73,7 +73,6 @@ const NavLink = styled.a`
         width: 350px;
         height: 350px;
     }
-    
 `
 
 
@@ -82,7 +81,7 @@ const LogoBackground = styled.div`
     height: 100px;
     width: 250px;
     overflow: hidden;
-    border-radius: 0 0 25px 25px;
+    border-radius: 0px 0px 25px 25px;
     display: flex;
     justify-content: center;
     align-items: center;
