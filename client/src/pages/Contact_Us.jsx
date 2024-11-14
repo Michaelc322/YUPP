@@ -68,9 +68,8 @@ const Container = styled.div`
     align-items: center;
     height: calc(100vh - 100px);
     position: relative;
-    top: 100px;
+    top: 75px;
     width: 100%;
-    background-color: #f9f9f9;
 `;
 
 const VerticalContainer = styled.div`
@@ -87,18 +86,19 @@ const VerticalContainer = styled.div`
 `;
 
 const Header = styled.h1`
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em;
+    font-weight: 800;
+    color: var(--secondary-text); /* Green color */
+    font-family: 'Poppins', sans-serif;
     margin-bottom: 20px;
     text-align: center;
 `;
 
 const SubText = styled.p`
-    font-size: 1.1em;
-    color: #555;
-    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25em;
+    font-weight: 500;
+    color: #f4d548; /* Yellow color */
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     text-align: center;
     margin-bottom: 30px;
@@ -163,7 +163,6 @@ const ContactUs = () => {
         </SubText>
         <ContactInfo>Email: YUPPassist@gmail.com</ContactInfo>
         
-        {/* Optional Contact Form */}
         <FormContainer>
           <Input type="text" placeholder="Your Name" />
           <Input type="email" placeholder="Your Email" />
