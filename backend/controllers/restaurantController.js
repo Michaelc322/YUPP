@@ -4,9 +4,19 @@ const RestaurantModel = require('../models/Restaurant');
 // Register endpoint
 const createRestaurant = async(req, res) => {
     try{
-        const { restuarantName, cuisine, priceLevel, latitude, longitude, address } = req.body;
+        const { restaurantName, cuisine, priceLevel, lat, lng, address, activeDeals } = req.body;
 
-        return res.json(user)
+        const restaurant = await RestaurantModel.create({
+            restaurantName,
+            cuisine,
+            priceLevel,
+            lat,
+            lng,
+            address,
+            activeDeals
+        })
+
+        return res.json(restaurant, "Restaurant created successfully");
     }
     catch(error){
         console.log(error);
