@@ -11,9 +11,6 @@ const restaurantSchema = new Schema({
     address: String,
     activeDeals: Array,
 
-
-
-
 })
 
 const RestaurantModel = mongoose.model('Restaurant', restaurantSchema);

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Body = styled.div`
   font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +26,7 @@ const Label = styled.label`
   margin-bottom: 5px;
   font-weight: bold;
   `
-  const Input = styled.input`
+const Input = styled.input`
    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -49,6 +48,15 @@ const Button = styled.button`
     }
 
     `
+
+const Form = styled.form`
+  width: 100%;
+`
+
+const Div = styled.div`
+  background-color: #f8d7da;
+
+`
 
 Function
 const login = () => {
