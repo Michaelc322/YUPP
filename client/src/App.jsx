@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Map from './map/Map'
 import About from './pages/About'
 import OurMission from './pages/OurMission'
+import Login from './pages/login'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Restaurants from './pages/Restaurants'
@@ -21,6 +22,7 @@ function App() {
           <Route path='/about' element={<About/>}/>
           <Route path = '/OurMission' element={<OurMission/>}/>
           <Route path='/restaurants' element={<Restaurants/>}/>
+          <Route path='/login' element={<Login/>}/>
         </Routes>
       </BrowserRouter>
     </>
