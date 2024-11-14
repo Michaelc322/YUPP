@@ -1,0 +1,19 @@
+/* Media Queries/ resizing of the page: Default styles for larger screens */
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 600px) {
+    body {
+      font-size: 12px;
+    }
+  }
+  
+  /* Tablet styles */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    body {
+      font-size: 14px;
+    }
+  }
