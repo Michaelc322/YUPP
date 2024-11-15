@@ -9,6 +9,7 @@ import Contact_Us from './pages/Contact_Us'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Restaurants from './pages/Restaurants'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
           <Route path = '/contact' element={<Contact_Us/>}/>
         </Routes>
       </BrowserRouter>
+
+      {/* <Footer/> */}
     </>
   )
 }

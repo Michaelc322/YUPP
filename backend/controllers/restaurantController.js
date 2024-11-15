@@ -38,9 +38,22 @@ const createRestaurant = async(req, res) => {
     }
 }
 
+const displayRestaurants = async(req, res) => {
+    try{
+        const restaurants = await RestaurantModel.find({});
+        return res.json(restaurants);
+    }
+    catch(error){
+        return res.json({
+            error: 'An error occurred during retrieval of restaurants'
+        });
+    }
+}
+
 
 // export functions
 
 module.exports = {
     createRestaurant,
+    displayRestaurants
 }

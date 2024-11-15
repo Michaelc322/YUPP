@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-const { createRestaurant } = require('../controllers/restaurantController');
+const { createRestaurant, displayRestaurants } = require('../controllers/restaurantController');
 
 
 // middleware
@@ -14,6 +14,7 @@ router.use(
 );
 
 router.post('/createRestaurant', createRestaurant);
+router.get('/api/restaurants', displayRestaurants);
 
 
 
