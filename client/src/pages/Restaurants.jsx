@@ -42,7 +42,6 @@ const Search = styled.input`
 const Restaurants = () => {
 
 
-    //const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
     const url = ""
     const [coordinates, setCoordinates] = useState({})
     //const [places, setPlaces] = useState([])
@@ -53,7 +52,7 @@ const Restaurants = () => {
     const type = '&keyword=restaurant';
     const key = '&key=AIzaSyDZaDr8KY4EcksgJ5mVXyknwF6OY2eGNuo';
     const restaurantSearchUrl = url + location + radius + type + key;
-
+    const [loading, setLoading] = useState(true)
 
 
     const places = [
@@ -114,28 +113,39 @@ const Restaurants = () => {
 
 
     const getPlacesData = async (sw, ne) => {
-        try {
-            // const { data: { data }} = await axios.get(URL, {
-            //     params: {
-            //         bl_latitude: sw.lat,
-            //         tr_latitude: ne.lat,
-            //         bl_longitude: sw.lng,
-            //         tr_longitude: ne.lng,
-            //         lunit: 'mi'
-            //       },
-            //       headers: {
-            //         'x-rapidapi-key': '47ffb58032mshfc379c19437d4ebp18eaf5jsnd1bf0da65be2',
-            //         'x-rapidapi-host': 'travel-advisor.p.rapidapi.com'
-            //       }
-            // })
-            if (coordinates.lat && coordinates.lng) {
-                const { data } = await axios.get(restaurantSearchUrl)
-            }
+        // try {
+        //     const { data: { data }} = await axios.get(URL, {
+        //         params: {
+        //             bl_latitude: sw.lat,
+        //             tr_latitude: ne.lat,
+        //             bl_longitude: sw.lng,
+        //             tr_longitude: ne.lng,
+        //             lunit: 'mi'
+        //           },
+        //           headers: {
+        //             'x-rapidapi-key': '47ffb58032mshfc379c19437d4ebp18eaf5jsnd1bf0da65be2',
+        //             'x-rapidapi-host': 'travel-advisor.p.rapidapi.com'
+        //           }
+        //     })
+        //     if (coordinates.lat && coordinates.lng) {
+        //         const { data } = await axios.get(restaurantSearchUrl)
+        //     }
             
+        //     return data
+        // } catch (error) {
+        //     console.log(error)
+        // }
+        try {
+            const { data } = await axios.get("http://localhost:8000/api/restaurants")
+            //setPlaces(data)
             return data
         } catch (error) {
             console.log(error)
+            
         }
+
+
+
     }
 
 
@@ -151,8 +161,7 @@ const Restaurants = () => {
         console.log(coordinates, bounds);
         console.log(coordinates.lat, coordinates.lng)
         getPlacesData(coordinates.lat, coordinates.lng).then((data) => {
-            setPlaces(data)
-            console.log
+            // setPlaces(data)
         })
     }, [coordinates, bounds])
 
@@ -173,7 +182,7 @@ const Restaurants = () => {
         places={places}
         currentLocation={currentLocation}/>
 
-
+    {/* { loading ? <h1>Loading...</h1> : <DealCards places={places}/>} */}
     <DealCards places={places}/>
     </>
   )

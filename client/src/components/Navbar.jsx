@@ -143,6 +143,7 @@ const Navbar = () => {
     <Nav>
         <NavLink className="btn" href="/restaurants" onMouseEnter={handleMouseEnter}>Restaurants</NavLink>
         <NavLink className="btn" href="/OurMission" onMouseEnter={handleMouseEnter}>Our Mission</NavLink>
+        <NavLink href="/about" onMouseEnter={handleMouseEnter}>FAQ</NavLink>
 
         <LogoBackground>
             <MainLogo>
@@ -154,8 +155,10 @@ const Navbar = () => {
                 </HomeButton>
             </MainLogo>
         </LogoBackground>
-        <NavLink href="/about" onMouseEnter={handleMouseEnter}>FAQ</NavLink>
         <NavLink href="/contact" onMouseEnter={handleMouseEnter}>Contact Us</NavLink>
+        <NavLink href="/login" onMouseEnter={handleMouseEnter}>Login</NavLink>
+        <NavLink href="/login" onMouseEnter={handleMouseEnter}>Sign Up</NavLink>
+
     </Nav>
 
 

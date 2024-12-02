@@ -1,10 +1,23 @@
 const RestaurantModel = require('../models/Restaurant');
 
 
-// Register endpoint
 const createRestaurant = async(req, res) => {
     try{
+
         const { restaurantName, cuisine, priceLevel, lat, lng, address, activeDeals } = req.body;
+
+        if (restaurantName === '' || cuisine === '' || priceLevel === '' || lat === '' || lng === '' || address === '' || activeDeals === '') {
+            return res.json({
+                error: 'All fields are required'
+            });
+        }
+
+        const exist = await RestaurantModel.findOne({restaurantName})
+        if(exist){
+            return res.json({
+                error: 'A restaurant with this name already exists'
+            })
+        }
 
         const restaurant = await RestaurantModel.create({
             restaurantName,
@@ -16,12 +29,23 @@ const createRestaurant = async(req, res) => {
             activeDeals
         })
 
-        return res.json(restaurant, "Restaurant created successfully");
+        return res.json(restaurant);
     }
     catch(error){
-        console.log(error);
         return res.json({
-            error: 'An error occurred during registration'
+            error: 'An error occurred during creation of restaurant'
+        });
+    }
+}
+
+const displayRestaurants = async(req, res) => {
+    try{
+        const restaurants = await RestaurantModel.find({});
+        return res.json(restaurants);
+    }
+    catch(error){
+        return res.json({
+            error: 'An error occurred during retrieval of restaurants'
         });
     }
 }
@@ -31,4 +55,5 @@ const createRestaurant = async(req, res) => {
 
 module.exports = {
     createRestaurant,
+    displayRestaurants
 }
