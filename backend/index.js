@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URL)
 .catch((err) => console.log('Database connection failed', err));
 
 
-
+console.log(process.env.MONGO_URL)
 
 // middleware
 app.use(express.urlencoded({extended: false}));
