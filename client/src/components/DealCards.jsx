@@ -4,6 +4,8 @@ import Slider from 'react-slick'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
+import { computeDistanceBetween } from 'spherical-geometry-js'
+
 const HorizontalStack = styled.div`
   width: 100%; /* Full width */
   height: 400px; /* Set a height */
@@ -29,6 +31,16 @@ const DealCardContainer = styled.div`
     position: relative;
 
 
+`
+
+const DealDescription = styled.p`
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+    font-family: Montserrat;
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-right: 10px;
 `
 
 const PriceRange = styled.p`
@@ -89,11 +101,14 @@ const CardContainer = styled.div`
 `
 
 
-const DealCards = ({ places }) => {
+const DealCards = ({ places, currentLocation }) => {
+  const calculateDistance = (lat, lon) => {
+    // calcaulte miles away from currentlocation
+    let dist = computeDistanceBetween(currentLocation.lat, currentLocation.lng, lat, lon)
+    console.log(dist)
 
-  
-    console.log(places)
 
+  }
   return (
     <HorizontalStack>
       <ContainerSlider>
@@ -146,8 +161,12 @@ const DealCards = ({ places }) => {
         <CardContainer>
         <DealCardContainer key={index}>
           <Distance>{place.distance_string}</Distance>
-          <Name>{place.name}</Name>
+          <Name>{place.restaurantName}</Name>
           <Address>{place.address}</Address>
+
+          {place.activeDeals?.map((deal, index) => (  
+            <DealDescription>{deal}</DealDescription>))}
+          
         </DealCardContainer>
         </CardContainer>
         </SwiperSlide>

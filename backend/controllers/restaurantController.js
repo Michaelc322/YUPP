@@ -1,12 +1,13 @@
+const { error } = require('console');
 const RestaurantModel = require('../models/Restaurant');
 
 
 const createRestaurant = async(req, res) => {
     try{
+        const { restaurantName, cuisine, priceLevel, latitude, longitude, address, activeDeals } = req.body;
 
-        const { restaurantName, cuisine, priceLevel, lat, lng, address, activeDeals } = req.body;
 
-        if (restaurantName === '' || cuisine === '' || priceLevel === '' || lat === '' || lng === '' || address === '' || activeDeals === '') {
+        if (restaurantName === '' || cuisine === '' || priceLevel === '' || latitude === '' || longitude === '' || address === '' || activeDeals === '') {
             return res.json({
                 error: 'All fields are required'
             });
@@ -23,15 +24,17 @@ const createRestaurant = async(req, res) => {
             restaurantName,
             cuisine,
             priceLevel,
-            lat,
-            lng,
+            latitude,
+            longitude,
             address,
             activeDeals
         })
 
+
         return res.json(restaurant);
     }
     catch(error){
+        console.log(error)
         return res.json({
             error: 'An error occurred during creation of restaurant'
         });

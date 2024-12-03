@@ -44,7 +44,7 @@ const Restaurants = () => {
 
     const url = ""
     const [coordinates, setCoordinates] = useState({})
-    //const [places, setPlaces] = useState([])
+    const [places, setPlaces] = useState([])
     const [bounds, setBounds] = useState({})
     const [currentLocation, setCurrentLocation] = useState({})
     const location = `location=${coordinates.lat},${coordinates.lng}`;
@@ -55,97 +55,18 @@ const Restaurants = () => {
     const [loading, setLoading] = useState(true)
 
 
-    const places = [
-        {
-            name: 'McDonalds',
-            price: '$',
-            distance_string: '0.5 mi',
-            address: '1234 Main St'
-
-        },
-        {
-            name: 'Burger King',
-            price: '$',
-            distance_string: '0.5 mi',
-            address: '1234 Main St'
-            
-        },
-        {
-            name: 'Chick-fil-a',
-            price: '$',
-            distance_string: '0.5 mi',
-            address: '1234 Main St'
-            
-        },
-        {
-            name: 'Chipotle',
-            price: '$',
-            distance_string: '0.5 mi',
-            address: '1234 Main St'
-            
-        },
-        {
-            name: 'Taco Bell',
-            price: '$',
-            distance_string: '0.5 mi',
-            address: '1234 Main St'
-            
-        },
-        {
-            name: 'Wendys',
-            price: '$',
-            distance_string: '0.5 mi',
-            address: '1234 Main St'
-            
-        },
-        {
-            name: 'Popeyes',
-            price: '$',
-            distance_string: '0.5 mi',
-            address: '1234 Main St'
-            
-        },
-
-
-
-    ]
-
-
 
     const getPlacesData = async (sw, ne) => {
-        // try {
-        //     const { data: { data }} = await axios.get(URL, {
-        //         params: {
-        //             bl_latitude: sw.lat,
-        //             tr_latitude: ne.lat,
-        //             bl_longitude: sw.lng,
-        //             tr_longitude: ne.lng,
-        //             lunit: 'mi'
-        //           },
-        //           headers: {
-        //             'x-rapidapi-key': '47ffb58032mshfc379c19437d4ebp18eaf5jsnd1bf0da65be2',
-        //             'x-rapidapi-host': 'travel-advisor.p.rapidapi.com'
-        //           }
-        //     })
-        //     if (coordinates.lat && coordinates.lng) {
-        //         const { data } = await axios.get(restaurantSearchUrl)
-        //     }
-            
-        //     return data
-        // } catch (error) {
-        //     console.log(error)
-        // }
+
         try {
             const { data } = await axios.get("http://localhost:8000/api/restaurants")
-            //setPlaces(data)
+            console.log(data)
+            setPlaces(data)
             return data
         } catch (error) {
             console.log(error)
             
         }
-
-
-
     }
 
 
@@ -183,7 +104,8 @@ const Restaurants = () => {
         currentLocation={currentLocation}/>
 
     {/* { loading ? <h1>Loading...</h1> : <DealCards places={places}/>} */}
-    <DealCards places={places}/>
+    <DealCards places={places} 
+                currentLocation={currentLocation}/>
     </>
   )
 }
