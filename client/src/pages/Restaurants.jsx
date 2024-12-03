@@ -105,7 +105,7 @@ const Restaurants = () => {
 
     {/* { loading ? <h1>Loading...</h1> : <DealCards places={places}/>} */}
     <DealCards places={places} 
-                currentLocation={currentLocation}/>
+            currentLocation={currentLocation}/>
     </>
   )
 }

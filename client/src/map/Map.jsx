@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import GoogleMapReact from 'google-map-react';
 import styled from 'styled-components'
-
+import { Marker } from '@react-google-maps/api';
 
 const MapContainer = styled.div`
   height: 450px;
@@ -22,15 +22,29 @@ const MarkerContainer = styled.div`
 const Map = ({ setBounds, coordinates, setCoordinates, places, currentLocation }) => {
 
     // const [coordinates, setCoordinates] = useState({});
-
+    const [markers, setMarkers] = useState([]);
     const [userMarker, setUserMarker] = useState({});
     //const [currentLocation, setCurrentLocation] = useState({});
-    console.log(places)
     console.log(coordinates)
     console.log(currentLocation)
 
+    const formattedMarkers = places.map((place, index) => ({
+        lat: place.latitude,
+        lng: place.longitude,
+    }));
+
+
+    useEffect(() => {
+    
+        setMarkers(formattedMarkers);
+    }, [places]);
+
+
+    console.log(formattedMarkers)
+    
 return (
 
+      
     <MapContainer>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDZaDr8KY4EcksgJ5mVXyknwF6OY2eGNuo' }}
@@ -253,15 +267,12 @@ return (
             >
 
         </MarkerContainer>
-        {places?.map((place, i) => (
-            <MarkerContainer
-                lat={place.lat}
-                lng={place.lng}
-                key={i}
-            >
-                <h1>{place.latitude}</h1>
-
-            </MarkerContainer>
+        {formattedMarkers.map((marker, index) => (
+                    <MarkerContainer
+                        key={index}
+                        lat={marker.lat}
+                        lng={marker.lng}
+                    />
         ))}
 
       </GoogleMapReact>

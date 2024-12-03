@@ -50,7 +50,7 @@ const PriceRange = styled.p`
     font-family: Montserrat;
     margin-left: 20px;
     background-color: var(--secondary-text);
-    width: 50px;
+    width: 35px;
     padding: 5px;
     border-radius: 10px;
 `
@@ -102,13 +102,18 @@ const CardContainer = styled.div`
 
 
 const DealCards = ({ places, currentLocation }) => {
-  const calculateDistance = (lat, lon) => {
+
+  console.log(currentLocation)
+
+  const calculateDistance = () => {
     // calcaulte miles away from currentlocation
-    let dist = computeDistanceBetween(currentLocation.lat, currentLocation.lng, lat, lon)
+    let dist = computeDistanceBetween(currentLocation.lat, currentLocation.lng, currentLocation.lat, currentLocation.lon)
     console.log(dist)
 
 
   }
+
+
   return (
     <HorizontalStack>
       <ContainerSlider>
@@ -160,7 +165,7 @@ const DealCards = ({ places, currentLocation }) => {
         <SwiperSlide key={index}>
         <CardContainer>
         <DealCardContainer key={index}>
-          <Distance>{place.distance_string}</Distance>
+          <PriceRange>{place.priceLevel}</PriceRange>
           <Name>{place.restaurantName}</Name>
           <Address>{place.address}</Address>
 
