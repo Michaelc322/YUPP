@@ -1,11 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
+import { device } from '../Styles/breakpoints'
 
+const Section = styled.section`
+    position: relative;
+    display: flex;
+    padding: 50px;
+    align-items: center;
+    background-color: var(--background-color);
+    height: calc(100vh - 100px);
+    flex-direction: column;
+    justify-content: center;
+    @media ${device.md}{
+        top: 80px;
+    }
+    
+`
 const Container = styled.div`
     display: flex;
     height: calc(100vh - 100px);
     position: relative;
-    top: 100px;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -49,6 +63,7 @@ const MainContainer = styled.div`
 
 const About = () => {
   return (
+    <Section>
     <Container>
         <MainContainer>
 
@@ -64,6 +79,7 @@ const About = () => {
 
          </MainContainer>
     </Container>
+    </Section>
   )
 }
 

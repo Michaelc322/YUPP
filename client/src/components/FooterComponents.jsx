@@ -1,10 +1,12 @@
 import styled from "styled-components";
  
 export const Box = styled.div`
-    background: #fff5ec;
+    background: var(--background-color);
     //position: absolute;
     bottom: 0;
     width: 100%;
+    z-index: 0;
+    border-top: 1px solid #269577;
  
 `;
  
@@ -15,14 +17,22 @@ export const FooterContainer = styled.div`
     justify-content: space-between;
     h3{
         color: var(--secondary-text);
-        font-family: Quicksand;
+        font-family: Poppins;
     }
 `;
  
+
+export const FooterWrap = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+`
  export const Socials = styled.a`
     color: var(--secondary-text);
-    font-size: 2.3rem;
-    font-family: "Font Awesome 6 Brands";
+    font-size: 1.2rem;
+    font-family: "Poppins";
     transition: color 0.3s ease-in-out;
     padding-right: 20px;
     &:hover{
@@ -37,7 +47,7 @@ export const FooterLink = styled.a`
     text-decoration: none;
  
     &:hover {
-        color: green;
+        color: #ccffcc;
         transition: 200ms ease-in;
     }
 `;

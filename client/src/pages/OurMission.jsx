@@ -1,7 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { device } from '../Styles/breakpoints'
 
+const Section = styled.section`
+    position: relative;
+    display: flex;
+    padding: 50px;
+    align-items: center;
+    background-color: var(--background-color);
+    height: calc(100vh - 100px);
+    flex-direction: column;
+    justify-content: center;
+    @media ${device.md}{
+        top: 80px;
+    }
+    
+`
 
 const Container = styled.div`
     display: flex;
@@ -9,7 +24,6 @@ const Container = styled.div`
     align-items: center;
     height: calc(100vh - 100px);
     position: relative;
-    top: 75px;
     width: 100%;
 
   `
@@ -60,6 +74,7 @@ const Image = styled.img`
 
 const OurMission = () => {
   return (
+    <Section>
     <Container>
       <VerticalContainer>
         <div>
@@ -77,6 +92,7 @@ const OurMission = () => {
         </ImageContainer>
       </VerticalContainer>
     </Container>
+    </Section>
   )
 }
-export default OurMission
+export default OurMission;

@@ -4,13 +4,30 @@ import styled from 'styled-components';
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
 
+import { device } from '../Styles/breakpoints'
 
+const Section = styled.section`
+    position: relative;
+    display: flex;
+    padding: 50px;
+    align-items: center;
+    background-color: var(--background-color);
+    height: calc(100vh - 100px);
+    flex-direction: column;
+    justify-content: center;
+    @media ${device.md}{
+        top: 80px;
+    }
+    
+    
+`
 const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 600px;
     position: relative;
+    margin-bottom: 100px;
     top: 100px;
     width: 100%;
 `;
@@ -24,18 +41,17 @@ const VerticalContainer = styled.div`
     max-width: 600px;
     padding: 40px;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 80%;
-    margin-top: 10px;
+    height: 100%;
 `;
 
 const Header = styled.h1`
-    font-size: 3.5em;
+    font-size: 3em;
     font-weight: 800;
     color: var(--secondary-text); /* Green color */
     font-family: 'Poppins', sans-serif;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     text-align: center;
 `;
 
@@ -46,7 +62,7 @@ const SubText = styled.p`
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 `;
 
 const ContactInfo = styled.p`
@@ -70,6 +86,8 @@ const Input = styled.input`
     border-radius: 5px;
     font-size: 1em;
     width: 100%;
+    height: 10px;
+    margin: 0;
 `;
 
 const TextArea = styled.textarea`
@@ -79,7 +97,7 @@ const TextArea = styled.textarea`
     font-size: 1em;
     width: 100%;
     resize: none;
-    height: 100px;
+    height: 50px;
 `;
 
 const Button = styled.button`
@@ -92,6 +110,7 @@ const Button = styled.button`
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-bottom: 50px;
     
     &:hover {
         background-color: #005bb5;
@@ -134,6 +153,7 @@ const ContactUs = () => {
     e.target.reset();
   };
   return (
+    <Section>
     <Container>
       <VerticalContainer>
         <Header>Contact Us</Header>
@@ -154,6 +174,7 @@ const ContactUs = () => {
         </FormContainer>
       </VerticalContainer>
     </Container>
+    </Section>
   );
 };
 
