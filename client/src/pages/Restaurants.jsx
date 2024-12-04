@@ -53,7 +53,8 @@ const Restaurants = () => {
     const key = '&key=AIzaSyDZaDr8KY4EcksgJ5mVXyknwF6OY2eGNuo';
     const restaurantSearchUrl = url + location + radius + type + key;
     const [loading, setLoading] = useState(true)
-
+    const [searchTerm, setSearchTerm] = useState('');
+    
 
 
     const getPlacesData = async (sw, ne) => {
@@ -69,6 +70,9 @@ const Restaurants = () => {
         }
     }
 
+    const filteredData = places.filter((item) => {
+        return item.restaurantName.toLowerCase().includes(searchTerm.toLowerCase());
+    });
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
@@ -92,7 +96,10 @@ const Restaurants = () => {
         <Header>
             Deals For You
         </Header>
-        <Search placeholder='Search for a restaurant. . .'>
+        <Search placeholder='Search for a restaurant. . .'
+        type='text'
+        value={searchTerm} 
+        onChange={(e) => setSearchTerm(e.target.value)} >
         
         </Search>
     </SearchContainer>
@@ -100,11 +107,11 @@ const Restaurants = () => {
     <Map setBounds={setBounds}
         setCoordinates={setCoordinates}
         coordinates={coordinates}
-        places={places}
+        places={filteredData}
         currentLocation={currentLocation}/>
 
     {/* { loading ? <h1>Loading...</h1> : <DealCards places={places}/>} */}
-    <DealCards places={places} 
+    <DealCards places={filteredData} 
             currentLocation={currentLocation}/>
     </>
   )

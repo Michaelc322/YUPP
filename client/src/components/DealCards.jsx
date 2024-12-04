@@ -112,8 +112,6 @@ const DealCards = ({ places, currentLocation }) => {
 
 
   }
-
-
   return (
     <HorizontalStack>
       <ContainerSlider>
