@@ -42,7 +42,6 @@ const createRestaurant = async(req, res) => {
 }
 
 const displayRestaurants = async(req, res) => {
-    console.log('displayRestaurants')
     try{
         const restaurants = await RestaurantModel.find({});
         return res.json(restaurants);

@@ -60,7 +60,7 @@ const Restaurants = () => {
     const getPlacesData = async (sw, ne) => {
 
         try {
-            const { data } = await axios.get("http://localhost:8000/api/restaurants")
+            const { data } = await axios.get("/api/restaurants")
             console.log(data)
             setPlaces(data)
             return data

@@ -7,36 +7,50 @@ const Container = styled.div`
     position: relative;
     top: 100px;
     width: 100%;
+    justify-content: center;
+    align-items: center;
 `
 const Header = styled.h1`
     align-items: left;
-    font-size: 75px;
+    font-size: 35px;
     font-weight: 800;
     color: var(--secondary-text);
     font-family: Reddit Sans Condensed;
-    margin-left: 100px;
 `
 const Question = styled.h1`
     align-items: left;
-    font-size: 50px;
+    font-size: 25px;
     font-weight: 800;
     color: var(--logo-background);
     font-family: Reddit Sans Condensed;
-    margin-left: 200px;
+    margin-left: 100px;
 `
 const Answer = styled.h1`
     align-items: left;
-    font-size: 50px;
+    font-size: 25px;
     font-weight: 800;
     color: var(--answer-text);
     font-family: Reddit Sans Condensed;
-    margin-left: 300px;
+    margin-left: 200px;
+`
+
+const MainContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 500px;
+    width: 900px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 `
 
 const About = () => {
   return (
     <Container>
-        <div>
+        <MainContainer>
 
             <Header>Frequently Asked Questions</Header>
 
@@ -48,7 +62,7 @@ const About = () => {
             <Question>How do I search for a restaurant?</Question>
             <Answer>Use the Navigation Bar on the Restaurants Page.</Answer>
 
-         </div>
+         </MainContainer>
     </Container>
   )
 }

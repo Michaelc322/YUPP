@@ -1,0 +1,68 @@
+.text{
+    font-family: Josefin Sans;
+    
+}
+
+input.input-error,
+select.input-error {
+  border-color: #fc8181;
+}
+
+.error {
+    color: #fc8181;
+    font-size: 0.75rem;
+    text-align: left;
+    font-family: Josefin Sans;
+    top: -12px;
+    left: 5px;
+    position: relative
+  }
+
+  .error_2 {
+    color: #fc8181;
+    font-size: 0.75rem;
+    text-align: left;
+    font-family: Josefin Sans;
+    top: -12px;
+    left: 10px;
+    position: relative
+  }
+
+  .loginError{
+    text-align: center;
+    color: #fc8181;
+    top: 30px;
+    font-size: .9rem;
+    font-family: Josefin Sans;
+    position: relative
+  }
+
+  .successH1{
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Poppins;
+    position: relative
+  }
+
+  .successText{
+    text-align: center;
+    color: #4CAF50;
+    font-size: .9rem;
+    font-family: Josefin Sans;
+    position: relative;
+    padding-top: 20px;
+  }
+
+  .successBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+  }
+
+.menuActive{
+  left: 100%;
+  transition: 0.5s ease;
+}

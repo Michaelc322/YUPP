@@ -4,13 +4,17 @@ import Home from './pages/Home'
 import Map from './map/Map'
 import About from './pages/About'
 import OurMission from './pages/OurMission'
-import Login from './pages/login'
+import Login from './pages/LoginPage'
 import Contact_Us from './pages/Contact_Us'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Restaurants from './pages/Restaurants'
 import Footer from './components/Footer'
+import Register from './pages/Register'
+import axios from 'axios'
 
+axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
@@ -26,6 +30,7 @@ function App() {
           <Route path='/restaurants' element={<Restaurants/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path = '/contact' element={<Contact_Us/>}/>
+          <Route path = "/register" element={<Register/>}/>
         </Routes>
       </BrowserRouter>
 

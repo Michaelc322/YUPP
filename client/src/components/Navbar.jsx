@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useAuth } from '../context/AuthProvider'
+
 
 const Nav = styled.div`
     position: fixed;
@@ -137,8 +139,20 @@ const Navbar = () => {
         navLink.style.setProperty('--x', `${x}px`);
         navLink.style.setProperty('--y', `${y}px`);
     }
-    
+
+
+    const { isLoggedIn, userInfo, logout } = useAuth();
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+
+        logout();
+        
+    }
+
   return (
+
+
     <>
     <Nav>
         <NavLink className="btn" href="/restaurants" onMouseEnter={handleMouseEnter}>Restaurants</NavLink>
@@ -155,9 +169,28 @@ const Navbar = () => {
                 </HomeButton>
             </MainLogo>
         </LogoBackground>
+
+
         <NavLink href="/contact" onMouseEnter={handleMouseEnter}>Contact Us</NavLink>
-        <NavLink href="/login" onMouseEnter={handleMouseEnter}>Login</NavLink>
-        <NavLink href="/login" onMouseEnter={handleMouseEnter}>Sign Up</NavLink>
+
+
+        {isLoggedIn ? (
+                <>
+                    <NavLink onMouseEnter={handleMouseEnter}>Welcome, {userInfo.firstName}</NavLink>
+
+                    <NavLink onMouseEnter={handleMouseEnter} onClick={handleLogout} href="/login">Log Out <i style={{
+                        marginLeft: '10px'
+                    }}className="fa-solid fa-right-from-bracket"></i></NavLink>
+
+                </>
+
+            ) : (
+                <>
+                    <NavLink href="/login" onMouseEnter={handleMouseEnter}>Login</NavLink>
+                    <NavLink href="/register" onMouseEnter={handleMouseEnter}>Sign Up</NavLink>
+                </>
+                
+            )}
 
     </Nav>
 
