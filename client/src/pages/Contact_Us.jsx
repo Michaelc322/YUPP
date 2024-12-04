@@ -1,74 +1,17 @@
-/* import React from 'react'
-import styled from 'styled-components'
 
-const Container = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 100px);
-    position: relative;
-    top: 100px;
-    width: 100%;
-
-  `
-  const VerticalContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 800px;
-  width: 1200px;
-  margin-left: 100px;
-
-  .textHolder {
-    width: 700px;
-  }
-
-`
-
-const Header = styled.h1`
-    align-items: left;
-    font-size: 75px;
-    font-weight: 800;
-    color: var(--secondary-text);
-    font-family: Reddit Sans Condensed;
-    margin-left: 100px
-`
-const SubText = styled.p`
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--text-color);
-    font-family: Montserrat;
-    line-height: 2;
-
-`
-const Contact_Us = () => {
-  return (
-    <Container>
-      <VerticalContainer>
-      <div>
-          <Header>Contact Us </Header>
-          <SubText>
-          At YUPP, we value your input. If you have any questions,
-          comments, feature requests, or concerns please let us know!
-          Email: YUPPassist@gmail.com
-          </SubText>
-        </div>
-        </VerticalContainer>
-    </Container>
-  )
-}
-export default Contact_Us
-*/
 import React from 'react';
 import styled from 'styled-components';
+import emailjs from '@emailjs/browser';
+import { useState } from 'react';
+
 
 const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 100px);
+    height: 100%;
     position: relative;
-    top: 75px;
+    top: 100px;
     width: 100%;
 `;
 
@@ -77,12 +20,14 @@ const VerticalContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    max-width: 800px;
+    width: 40%;
+    max-width: 600px;
     padding: 40px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 80%;
+    margin-top: 10px;
 `;
 
 const Header = styled.h1`
@@ -111,7 +56,7 @@ const ContactInfo = styled.p`
     text-align: center;
 `;
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -154,6 +99,40 @@ const Button = styled.button`
 `;
 
 const ContactUs = () => {
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [stateMessage, setStateMessage] = useState(null);
+  const sendEmail = (e) => {
+    e.persist();
+    e.preventDefault();
+    setIsSubmitting(true);
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_APP_SERVICE_ID,
+        import.meta.env.VITE_APP_TEMPLATE_ID,
+        e.target,
+        import.meta.env.VITE_APP_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          setStateMessage('Message sent!');
+          setIsSubmitting(false);
+          setTimeout(() => {
+            setStateMessage(null);
+          }, 5000); // hide message after 5 seconds
+        },
+        (error) => {
+          setStateMessage('Something went wrong, please try again later');
+          setIsSubmitting(false);
+          setTimeout(() => {
+            setStateMessage(null);
+          }, 5000); // hide message after 5 seconds
+        }
+      );
+    
+    // Clears the form after sending the email
+    e.target.reset();
+  };
   return (
     <Container>
       <VerticalContainer>
@@ -163,11 +142,15 @@ const ContactUs = () => {
         </SubText>
         <ContactInfo>Email: YUPPassist@gmail.com</ContactInfo>
         
-        <FormContainer>
-          <Input type="text" placeholder="Your Name" />
-          <Input type="email" placeholder="Your Email" />
-          <TextArea placeholder="Your Message" />
-          <Button type="submit">Send Message</Button>
+        <FormContainer onSubmit={sendEmail}>
+          <label>Name</label>
+          <Input type="text" id="from_name" name="from_name" />
+          <label>E-mail</label>
+          <Input type="email" id="from_email" name="from_email" placeholder="Your email.." required />
+          <label>Message</label>
+          <TextArea id="message" name="message" />
+          <Button type="submit" value="Send" disabled={isSubmitting}>Submit</Button>
+          {stateMessage && <p>{stateMessage}</p>}
         </FormContainer>
       </VerticalContainer>
     </Container>

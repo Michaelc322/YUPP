@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-google-maps/api": "^2.20.3",
     "axios": "^1.7.7",
+    "dotenv": "^16.4.7",
     "google-map-react": "^2.2.1",
     "google-maps-react-markers": "^2.0.11",
     "react": "^18.3.1",
