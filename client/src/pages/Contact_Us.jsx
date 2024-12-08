@@ -15,6 +15,7 @@ const Section = styled.section`
     height: calc(100vh - 100px);
     flex-direction: column;
     justify-content: center;
+    margin-top: 50px;
     @media ${device.md}{
         top: 80px;
     }

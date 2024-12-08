@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthProvider'
 
 
 const Nav = styled.div`
-    position: flex;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +36,6 @@ const NavLink = styled.a`
     transition: 0.5s;
     width: 150px;
     height: 100px;
-    position: relative;
     overflow: hidden;
 
     &:hover{
