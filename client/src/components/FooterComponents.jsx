@@ -1,7 +1,7 @@
 import styled from "styled-components";
  
 export const Box = styled.div`
-    background: var(--background-color);
+    background: var(--secondary-text);
     //position: absolute;
     bottom: 0;
     width: 100%;
@@ -16,7 +16,7 @@ export const FooterContainer = styled.div`
     display: flex;
     justify-content: space-between;
     h3{
-        color: var(--secondary-text);
+        color: var(--background-color);
         font-family: Poppins;
     }
 `;
@@ -30,7 +30,7 @@ export const FooterWrap = styled.div`
     
 `
  export const Socials = styled.a`
-    color: var(--secondary-text);
+    color: var(--background-color);
     font-size: 1.2rem;
     font-family: "Poppins";
     transition: color 0.3s ease-in-out;

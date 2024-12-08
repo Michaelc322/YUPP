@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthProvider'
 
 
 const Nav = styled.div`
-    position: fixed;
+    position: flex;
     display: flex;
     justify-content: space-between;
     align-items: center;
