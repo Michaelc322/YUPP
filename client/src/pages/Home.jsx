@@ -137,9 +137,9 @@ const Home = () => {
       <ImageContainer>
         <img className = "img1" src='./images/tacos.jpg'/>
         <img className = "img2" src='./images/pizza.png'/>
-        <img className = "img3" src='./images/smoothies.jpg'/>
+        {/*<img className = "img3" src='./images/smoothies.jpg'/>
         <img className = "img4" src='./images/sushi.jpg'/>
-        <img className = "img5" src='./images/burger.jpeg'/>
+        <img className = "img5" src='./images/burger.jpeg'/>*/}
       </ImageContainer>
     </Container>
     </Section>
